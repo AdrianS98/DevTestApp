@@ -1,8 +1,9 @@
-package com.example.devtestapp
+package com.example.devtestapp.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import com.example.devtestapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
