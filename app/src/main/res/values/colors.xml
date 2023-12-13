@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="graySeparator">#ABA9BF</color>
+    <color name="grayFields">#707070</color>
 </resources>

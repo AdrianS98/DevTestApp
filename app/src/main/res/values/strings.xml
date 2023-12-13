@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">DevTestApp</string>
+    <string name="tv_name_field">Nombre y apellidos</string>
+    <string name="tv_email_field">Email</string>
+    <string name="tv_gender_field">Género</string>
+    <string name="tv_date_field">Fecha de registro</string>
+    <string name="tv_phone_field">Teléfono</string>
+    <string name="tv_name_value">Test test</string>
 </resources>
