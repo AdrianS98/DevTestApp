@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">DevTestApp</string>
+    <string name="tv_name_field">Nombre y apellidos</string>
+    <string name="tv_email_field">Email</string>
+    <string name="tv_gender_field">Género</string>
+    <string name="tv_date_field">Fecha de registro</string>
+    <string name="tv_phone_field">Teléfono</string>
+    <string name="tv_name_value">Test test</string>
+
+    <string name="title_contacts">Contactos</string>
+
+
+    <!--Error texts-->
+    <string name="eror_not_found">Error: Not found</string>
+    <string name="error_something_went_wrong">Something went wrong</string>
+    <string name="error_get_data_text">No se han podido obtener los datos. Compruebe su conexión y vuelva a intentarlo.</string>
+    <string name="tv_address">Dirección</string>
 </resources>
