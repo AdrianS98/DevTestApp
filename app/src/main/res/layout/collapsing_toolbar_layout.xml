@@ -6,16 +6,23 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:layout_height="wrap_content">
+
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/collapsingToolbar"
             app:titleEnabled="false"
-
+            app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:title="Contactos"
+                android:id="@+id/mtToolbar"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -25,34 +32,21 @@
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax" />
 
-            <Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:minHeight="?attr/actionBarSize"
-                android:id="@+id/mtToolbar">
-
-                <TextView
-                    android:id="@+id/tvToolbarTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textColor="@color/white"
-                    android:gravity="center_vertical"
-                    android:textSize="@dimen/text_regular"/>
-            </Toolbar>
-
-
-
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Contactos" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profilePic"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@mipmap/test_image"
-        android:elevation="50dp"
         app:layout_anchor="@id/collapsingToolbar"
         app:layout_anchorGravity="bottom|start"
         android:layout_marginStart="20dp"
@@ -61,11 +55,11 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="@dimen/compact_general_margin"
             android:layout_height="match_parent">
 
             <LinearLayout
