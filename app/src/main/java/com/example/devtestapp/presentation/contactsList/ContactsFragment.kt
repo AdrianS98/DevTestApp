@@ -9,7 +9,6 @@ import androidx.annotation.StringRes
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.devtestapp.R
@@ -26,10 +25,6 @@ class ContactsFragment : Fragment() {
     private val contactsViewModel: ContactsViewModel by viewModels()
     private lateinit var contactsAdapter: ContactsAdapter
     private lateinit var connectionLiveData: ConnectionLiveData
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -69,7 +64,7 @@ class ContactsFragment : Fragment() {
 
     private fun fetchContacts() {
 
-        contactsViewModel.contacts.observe(viewLifecycleOwner, Observer {
+        contactsViewModel.contacts.observe(viewLifecycleOwner) {
             _binding!!.progress.isVisible = false
             when (it) {
 
@@ -91,14 +86,14 @@ class ContactsFragment : Fragment() {
                 }
 
             }
-        })
+        }
     }
 
     private fun showError(@StringRes stringRes: Int) {
         Toast.makeText(context, stringRes, Toast.LENGTH_LONG).show()
     }
     private fun observeContacts() {
-        contactsViewModel.contacts.observe(viewLifecycleOwner, Observer { contact ->
+        contactsViewModel.contacts.observe(viewLifecycleOwner) { contact ->
             if (!contact.data.isNullOrEmpty()) {
                 _binding!!.recyclerView.visibility = View.VISIBLE
                 _binding!!.llErrorData.visibility = View.GONE
@@ -107,7 +102,7 @@ class ContactsFragment : Fragment() {
                 _binding!!.recyclerView.visibility = View.GONE
                 _binding!!.llErrorData.visibility = View.VISIBLE
             }
-        })
+        }
     }
 
     private fun paintUI() {

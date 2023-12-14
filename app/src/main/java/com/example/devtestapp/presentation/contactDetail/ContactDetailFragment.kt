@@ -1,13 +1,14 @@
 package com.example.devtestapp.presentation.contactDetail
 
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
+import android.os.Build
+import android.os.Build.VERSION_CODES.O
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -26,12 +27,16 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.MapsInitializer
-import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.appbar.AppBarLayout
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.time.OffsetDateTime
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 
 class ContactDetailFragment : Fragment() {
@@ -60,6 +65,7 @@ class ContactDetailFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mContact = nArgs.contact
@@ -78,21 +84,22 @@ class ContactDetailFragment : Fragment() {
 
     }
 
+    @RequiresApi(O)
     private fun paintUI(mContact: ContactsModel) {
+
         _binding!!.tvNameValue.text = mContact.name
         _binding!!.tvEmailValue.text = mContact.email
         _binding!!.tvGenderValue.text = mContact.gender
-        _binding!!.tvDateValue.text = mContact.registeredDate
+        _binding!!.tvDateValue.text = OffsetDateTime.parse(mContact.registeredDate)
+            .format(DateTimeFormatter.ofPattern("dd-MM-uuuu", Locale.forLanguageTag("ES")))
         _binding!!.tvPhoneValue.text = mContact.phone
 
         setupToolbar(mContact.name)
 
-
-
-        if (!mContact.latitude.isNullOrBlank() && !mContact.longitude.isNullOrBlank()) {
+        if (mContact.latitude.isNotBlank() && mContact.longitude.isNotBlank()) {
             paintGoogleMapAddress(mContact.latitude, mContact.longitude)
         }
-        if (!mContact.pictureUrl.isNullOrBlank()) {
+        if (mContact.pictureUrl.isNotBlank()) {
             paintProfilePic(mContact.pictureUrl)
         }
 
