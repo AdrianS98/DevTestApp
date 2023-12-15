@@ -17,9 +17,11 @@ android {
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders["MAPS_API_KEY"] =  "AIzaSyCPfkxc_lrEXNhbZtzZKAtJwayyPgmcUD"
     }
+
+
 
     buildTypes {
         release {
@@ -29,6 +31,7 @@ android {
                 "proguard-rules.pro"
             )
         }
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
