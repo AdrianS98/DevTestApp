@@ -1,4 +1,4 @@
-DevTestApp (**Prueba técnica de AXPE CONSULTING**)
+DevTestApp (**Prueba técnica**)
 
 
 El proyecto sigue la arquitectura CLEAN y patron de arquitectura MVVM.                     
